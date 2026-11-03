@@ -1,0 +1,208 @@
+{
+  "title": "ScaleDaycares – Follow-Up Email Sequence Roadmap",
+  "A": {
+    "title": "A · How a lead enters the Follow-Up Board",
+    "entries": [
+      "Follow-up or two-call close no-show → Warm, next-day touch",
+      "Call ended with a follow-up date (said on the call, or Daniel types it in the EOD; 'next week' = next Monday, 'next month' = the 1st, none said = call + 7 days)",
+      "Two-call close or follow-up call held, no close, no new date"
+    ],
+    "sources": [
+      "Fathom recording/recap",
+      "EOD doc",
+      "Google Calendar"
+    ],
+    "flow": [
+      "Admin bot",
+      "Pipeline (Follow-Up Board, Warm, Next Touch date)"
+    ],
+    "exits": [
+      "Closed (Closed tab or payment confirmation email)",
+      "Lost/DQ (only if Daniel writes it)",
+      "Hot (call booked → Upcoming Calls)"
+    ]
+  },
+  "B": {
+    "title": "B · Email sequence",
+    "phases": [
+      {
+        "name": "Fast follow-up",
+        "cadence": "every 5 days",
+        "gap": "+5 days",
+        "color": "#2e7d32",
+        "emails": [
+          {
+            "n": 1,
+            "day": 0,
+            "title": "Email 1 - Day 0 - Fast follow-up",
+            "prompt": ""
+          },
+          {
+            "n": 2,
+            "day": 5,
+            "title": "Email 2 - Day 5 - Fast follow-up",
+            "prompt": ""
+          },
+          {
+            "n": 3,
+            "day": 10,
+            "title": "Email 3 - Day 10 - Fast follow-up",
+            "prompt": ""
+          }
+        ]
+      },
+      {
+        "name": "Check-in",
+        "cadence": "every 14 days",
+        "gap": "+14 days",
+        "color": "#1565c0",
+        "emails": [
+          {
+            "n": 4,
+            "day": 24,
+            "title": "Email 4 - Day 24 - Check-in",
+            "prompt": ""
+          },
+          {
+            "n": 5,
+            "day": 38,
+            "title": "Email 5 - Day 38 - Check-in",
+            "prompt": ""
+          }
+        ]
+      },
+      {
+        "name": "Monthly nurture",
+        "cadence": "every 30 days",
+        "gap": "+30 days",
+        "color": "#6a1b9a",
+        "emails": [
+          {
+            "n": 6,
+            "day": 68,
+            "title": "Email 6 - Day 68 - Monthly nurture",
+            "prompt": ""
+          },
+          {
+            "n": 7,
+            "day": 98,
+            "title": "Email 7 - Day 98 - Monthly nurture",
+            "prompt": ""
+          },
+          {
+            "n": 8,
+            "day": 128,
+            "title": "Email 8 - Day 128 - Monthly nurture",
+            "prompt": ""
+          },
+          {
+            "n": 9,
+            "day": 158,
+            "title": "Email 9 - Day 158 - Monthly nurture",
+            "prompt": ""
+          },
+          {
+            "n": 10,
+            "day": 188,
+            "title": "Email 10 - Day 188 - Monthly nurture",
+            "prompt": ""
+          },
+          {
+            "n": 11,
+            "day": 218,
+            "title": "Email 11 - Day 218 - Monthly nurture",
+            "prompt": ""
+          },
+          {
+            "n": 12,
+            "day": 248,
+            "title": "Email 12 - Day 248 - Monthly nurture",
+            "prompt": ""
+          },
+          {
+            "n": 13,
+            "day": 278,
+            "title": "Email 13 - Day 278 - Monthly nurture",
+            "prompt": ""
+          },
+          {
+            "n": 14,
+            "day": 308,
+            "title": "Email 14 - Day 308 - Monthly nurture",
+            "prompt": ""
+          },
+          {
+            "n": 15,
+            "day": 338,
+            "title": "Email 15 - Day 338 - Monthly nurture",
+            "prompt": ""
+          },
+          {
+            "n": 16,
+            "day": 368,
+            "title": "Email 16 - Day 368 - Monthly nurture",
+            "prompt": ""
+          },
+          {
+            "n": 17,
+            "day": 398,
+            "title": "Email 17 - Day 398 - Monthly nurture",
+            "prompt": ""
+          }
+        ]
+      }
+    ],
+    "end": "Gone Cold - no reply after the full sequence"
+  },
+  "C": {
+    "title": "C · Branches / rules",
+    "items": [
+      "Lead replies → touch count resets to 0, restart Email 1 cadence, next touch = reply + 5 days. Daniel answers replies himself.",
+      "New call booked → leaves the sequence → Hot (Upcoming Calls); after the call, re-enters fresh.",
+      "Daniel says 'cold' → Gone Cold immediately. Daniel says 'Lost' / 'no follow-up' → Lost.",
+      "Pays → Closed, stops everything."
+    ]
+  },
+  "D": {
+    "title": "D · How each email is made and sent",
+    "steps": [
+      "Each morning: find leads due today (green) or overdue (red) on the Pipeline Follow-Up Board",
+      "Pull context: Fathom recap, objection, 'Where It Stands', center name, past thread",
+      "Write a personalized email from that stage's prompt",
+      "Send as a REPLY in the lead's existing Gmail thread from daniel.salinas@scaledaycares.com (green 'pipe' label)",
+      "Pipeline updates itself: Last Touch, Touches +1, Next Touch; row goes uncolored",
+      "Nightly check catches replies"
+    ],
+    "notes": [
+      "Approval: Daniel reviews drafts at first, then auto-send once trusted",
+      "Writer: Grok (default) vs ChatGPT (side-by-side test pending)"
+    ]
+  },
+  "E": {
+    "title": "E · Text lane",
+    "status": "SMS / iMessage via GoHighLevel - waiting on A2P approval",
+    "texts": [
+      {
+        "day": 0,
+        "title": "Text - TBD (Day 0)"
+      },
+      {
+        "day": 5,
+        "title": "Text - TBD (Day 5)"
+      },
+      {
+        "day": 10,
+        "title": "Text - TBD (Day 10)"
+      }
+    ]
+  },
+  "F": {
+    "title": "F · Open questions",
+    "items": [
+      "Which emails also get a text?",
+      "Email 1 wording differs by entry reason (no-show vs undecided)?",
+      "Send from Gmail or GHL sub-account?",
+      "When to switch from approve-first to auto-send?"
+    ]
+  }
+}
