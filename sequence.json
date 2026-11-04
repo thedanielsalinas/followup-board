@@ -1,5 +1,5 @@
 {
-  "title": "ScaleDaycares – Follow-Up Email Sequence Roadmap",
+  "title": "ScaleDaycares – Follow-Up Sequences Roadmap",
   "A": {
     "title": "A · How a lead enters the Follow-Up Board",
     "entries": [
@@ -203,6 +203,97 @@
       "Email 1 wording differs by entry reason (no-show vs undecided)?",
       "Send from Gmail or GHL sub-account?",
       "When to switch from approve-first to auto-send?"
+    ]
+  },
+  "router": {
+    "title": "Lead enters a sequence",
+    "note": "Router: each lead goes into ONE branch based on why they need follow-up. Every branch reuses the same architecture (entry → emails → branches/exits).",
+    "branches": [
+      {
+        "id": 1,
+        "name": "Branch 1: No-Show / Follow-Up Pending",
+        "when": "No-show on a follow-up or two-call close, or call ended without a close (follow-up date / undecided)",
+        "color": "#2e7d32"
+      },
+      {
+        "id": 2,
+        "name": "Branch 2: Two-Call Close Nurture",
+        "when": "Two-call close booked (Grape event on the calendar)",
+        "color": "#e65100"
+      },
+      {
+        "id": 3,
+        "name": "Branch 3: Call Confirmation (pre-call show-up)",
+        "when": "Any call booked - extra layer on top of the appointment setter",
+        "color": "#00838f"
+      },
+      {
+        "id": 4,
+        "name": "Branch 4+: more coming (TBD)",
+        "when": "Other lead categories - Daniel to define",
+        "color": "#9e9e9e"
+      }
+    ]
+  },
+  "B3": {
+    "title": "Branch 3 · Call Confirmation (pre-call show-up)",
+    "status": "Architecture TBD - Daniel to define. Email + SMS lane, runs before the call as an extra layer on top of the appointment setter (not fully reliable).",
+    "entry": "Call booked",
+    "checkpoints": [
+      "Acknowledged they have the call link",
+      "Received case studies",
+      "Watched case studies"
+    ],
+    "touch": [
+      "Email - TBD",
+      "Text - TBD"
+    ],
+    "noack": "No acknowledgment → escalate / next touch (TBD)",
+    "end": "Shows up to call"
+  },
+  "B2": {
+    "title": "Branch 2 · Two-Call Close Nurture",
+    "entry": "Two-call close booked (Grape / purple event on Daniel's calendar)",
+    "precall": [
+      {
+        "n": 1,
+        "title": "Pre-call Email 1 - sent right after booking",
+        "prompt": "TBD - Daniel to define"
+      },
+      {
+        "n": 2,
+        "title": "Pre-call Email 2 - TBD timing before call (e.g. day before)",
+        "prompt": "TBD - Daniel to define"
+      }
+    ],
+    "meeting": "Two-call close meeting",
+    "exits": [
+      {
+        "if": "Pays",
+        "to": "Closed - stops everything",
+        "kind": "closed"
+      },
+      {
+        "if": "Shows but no decision",
+        "to": "Hands off to follow-up → Branch 1 (Follow-Up Pending) or a TBD post-call nurture",
+        "kind": "b1"
+      },
+      {
+        "if": "No-show",
+        "to": "→ Branch 1 No-Show: Warm, next-day touch",
+        "kind": "b1"
+      },
+      {
+        "if": "Reschedules",
+        "to": "↺ Back to pre-call phase (new date)",
+        "kind": "loop"
+      }
+    ],
+    "questions": [
+      "Exact timing of each pre-call email?",
+      "How many pre-call emails (1, 2, more)?",
+      "Post-call 'no decision' path: reuse Branch 1 or its own post-call nurture?",
+      "How do pre-call emails fit with the nightly confirmation email already sent the night before?"
     ]
   }
 }

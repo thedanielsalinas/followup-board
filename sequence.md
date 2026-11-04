@@ -1,4 +1,15 @@
-# ScaleDaycares – Follow-Up Email Sequence Roadmap
+# ScaleDaycares – Follow-Up Sequences Roadmap
+
+## Lead enters a sequence
+Router: each lead goes into ONE branch based on why they need follow-up. Every branch reuses the same architecture (entry → emails → branches/exits).
+- **Branch 1: No-Show / Follow-Up Pending** — No-show on a follow-up or two-call close, or call ended without a close (follow-up date / undecided)
+- **Branch 2: Two-Call Close Nurture** — Two-call close booked (Grape event on the calendar)
+- **Branch 3: Call Confirmation (pre-call show-up)** — Any call booked - extra layer on top of the appointment setter
+- **Branch 4+: more coming (TBD)** — Other lead categories - Daniel to define
+
+---
+
+# Branch 1: No-Show / Follow-Up Pending
 
 ## A · How a lead enters the Follow-Up Board
 
@@ -69,3 +80,57 @@ SMS / iMessage via GoHighLevel - waiting on A2P approval
 - Email 1 wording differs by entry reason (no-show vs undecided)?
 - Send from Gmail or GHL sub-account?
 - When to switch from approve-first to auto-send?
+
+---
+
+# Branch 2 · Two-Call Close Nurture
+
+**Entry trigger:** Two-call close booked (Grape / purple event on Daniel's calendar)
+
+## Pre-call phase
+- Pre-call Email 1 - sent right after booking — content: TBD - Daniel to define
+- Pre-call Email 2 - TBD timing before call (e.g. day before) — content: TBD - Daniel to define
+
+## Two-call close meeting
+
+## After the meeting
+- Pays → Closed - stops everything
+- Shows but no decision → Hands off to follow-up → Branch 1 (Follow-Up Pending) or a TBD post-call nurture
+- No-show → → Branch 1 No-Show: Warm, next-day touch
+- Reschedules → ↺ Back to pre-call phase (new date)
+
+## Branch 2 open questions
+- Exact timing of each pre-call email?
+- How many pre-call emails (1, 2, more)?
+- Post-call 'no decision' path: reuse Branch 1 or its own post-call nurture?
+- How do pre-call emails fit with the nightly confirmation email already sent the night before?
+
+---
+
+# Branch 3 · Call Confirmation (pre-call show-up)
+
+_Architecture TBD - Daniel to define. Email + SMS lane, runs before the call as an extra layer on top of the appointment setter (not fully reliable)._
+
+**Entry trigger:** Call booked
+
+## Checkpoint 1: Acknowledged they have the call link
+- Email touch: TBD
+- Text touch: TBD
+- No acknowledgment → escalate / next touch (TBD)
+
+## Checkpoint 2: Received case studies
+- Email touch: TBD
+- Text touch: TBD
+- No acknowledgment → escalate / next touch (TBD)
+
+## Checkpoint 3: Watched case studies
+- Email touch: TBD
+- Text touch: TBD
+- No acknowledgment → escalate / next touch (TBD)
+
+**End:** Shows up to call
+
+---
+
+# Branch 4+: more coming (TBD)
+Placeholder for other lead categories Daniel will add.
