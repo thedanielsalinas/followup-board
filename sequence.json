@@ -1,299 +1,276 @@
 {
-  "title": "ScaleDaycares – Follow-Up Sequences Roadmap",
-  "A": {
-    "title": "A · How a lead enters the Follow-Up Board",
-    "entries": [
-      "Follow-up or two-call close no-show → Warm, next-day touch",
-      "Call ended with a follow-up date (said on the call, or Daniel types it in the EOD; 'next week' = next Monday, 'next month' = the 1st, none said = call + 7 days)",
-      "Two-call close or follow-up call held, no close, no new date"
-    ],
-    "sources": [
-      "Fathom recording/recap",
-      "EOD doc",
-      "Google Calendar"
-    ],
-    "flow": [
-      "Admin bot",
-      "Pipeline (Follow-Up Board, Warm, Next Touch date)"
-    ],
-    "exits": [
-      "Closed (Closed tab or payment confirmation email)",
-      "Lost/DQ (only if Daniel writes it)",
-      "Hot (call booked → Upcoming Calls)"
-    ]
+  "title": "ScaleDaycares – Six-Branch Follow-Up Roadmap",
+  "version": 2,
+  "source": "Sales Ops Brain 2 – November 5, 2026",
+  "definitions": {
+    "firstCallNoShow": "A brand-new prospect who missed the original appointment. Daniel has never spoken with them.",
+    "secondCallNoShow": "A prospect Daniel already spoke with who booked and then missed the second/closing call.",
+    "timing": "Day numbers are measured from entry into the branch unless the touch is labeled relative to an appointment."
   },
-  "B": {
-    "title": "B · Email sequence",
-    "phases": [
-      {
-        "name": "Fast follow-up",
-        "cadence": "every 5 days",
-        "gap": "+5 days",
-        "color": "#2e7d32",
-        "emails": [
-          {
-            "n": 1,
-            "day": 0,
-            "title": "Email 1 - Day 0 - Fast follow-up",
-            "prompt": ""
-          },
-          {
-            "n": 2,
-            "day": 5,
-            "title": "Email 2 - Day 5 - Fast follow-up",
-            "prompt": ""
-          },
-          {
-            "n": 3,
-            "day": 10,
-            "title": "Email 3 - Day 10 - Fast follow-up",
-            "prompt": ""
-          }
-        ]
-      },
-      {
-        "name": "Check-in",
-        "cadence": "every 14 days",
-        "gap": "+14 days",
-        "color": "#1565c0",
-        "emails": [
-          {
-            "n": 4,
-            "day": 24,
-            "title": "Email 4 - Day 24 - Check-in",
-            "prompt": ""
-          },
-          {
-            "n": 5,
-            "day": 38,
-            "title": "Email 5 - Day 38 - Check-in",
-            "prompt": ""
-          }
-        ]
-      },
-      {
-        "name": "Monthly nurture",
-        "cadence": "every 30 days",
-        "gap": "+30 days",
-        "color": "#6a1b9a",
-        "emails": [
-          {
-            "n": 6,
-            "day": 68,
-            "title": "Email 6 - Day 68 - Monthly nurture",
-            "prompt": ""
-          },
-          {
-            "n": 7,
-            "day": 98,
-            "title": "Email 7 - Day 98 - Monthly nurture",
-            "prompt": ""
-          },
-          {
-            "n": 8,
-            "day": 128,
-            "title": "Email 8 - Day 128 - Monthly nurture",
-            "prompt": ""
-          },
-          {
-            "n": 9,
-            "day": 158,
-            "title": "Email 9 - Day 158 - Monthly nurture",
-            "prompt": ""
-          },
-          {
-            "n": 10,
-            "day": 188,
-            "title": "Email 10 - Day 188 - Monthly nurture",
-            "prompt": ""
-          },
-          {
-            "n": 11,
-            "day": 218,
-            "title": "Email 11 - Day 218 - Monthly nurture",
-            "prompt": ""
-          },
-          {
-            "n": 12,
-            "day": 248,
-            "title": "Email 12 - Day 248 - Monthly nurture",
-            "prompt": ""
-          },
-          {
-            "n": 13,
-            "day": 278,
-            "title": "Email 13 - Day 278 - Monthly nurture",
-            "prompt": ""
-          },
-          {
-            "n": 14,
-            "day": 308,
-            "title": "Email 14 - Day 308 - Monthly nurture",
-            "prompt": ""
-          },
-          {
-            "n": 15,
-            "day": 338,
-            "title": "Email 15 - Day 338 - Monthly nurture",
-            "prompt": ""
-          },
-          {
-            "n": 16,
-            "day": 368,
-            "title": "Email 16 - Day 368 - Monthly nurture",
-            "prompt": ""
-          },
-          {
-            "n": 17,
-            "day": 398,
-            "title": "Email 17 - Day 398 - Monthly nurture",
-            "prompt": ""
-          }
-        ]
-      }
-    ],
-    "end": "Gone Cold - no reply after the full sequence"
+  "authority": {
+    "source": "Daniel's EOD, populated and interpreted by Grokbot",
+    "rule": "EOD/Grokbot is authoritative for no-shows, cancellations, reschedules, and the lead's next branch. Never infer a no-show only because a scheduled date passed."
   },
-  "C": {
-    "title": "C · Branches / rules",
-    "items": [
-      "Lead replies → touch count resets to 0, restart Email 1 cadence, next touch = reply + 5 days. Daniel answers replies himself.",
-      "New call booked → leaves the sequence → Hot (Upcoming Calls); after the call, re-enters fresh.",
-      "Daniel says 'cold' → Gone Cold immediately. Daniel says 'Lost' / 'no follow-up' → Lost.",
-      "Pays → Closed, stops everything."
-    ]
-  },
-  "D": {
-    "title": "D · How each email is made and sent",
-    "steps": [
-      "Each morning: find leads due today (green) or overdue (red) on the Pipeline Follow-Up Board",
-      "Pull context: Fathom recap, objection, 'Where It Stands', center name, past thread",
-      "Write a personalized email from that stage's prompt",
-      "Send as a REPLY in the lead's existing Gmail thread from daniel.salinas@scaledaycares.com (green 'pipe' label)",
-      "Pipeline updates itself: Last Touch, Touches +1, Next Touch; row goes uncolored",
-      "Nightly check catches replies"
-    ],
-    "notes": [
-      "Approval: Daniel reviews drafts at first, then auto-send once trusted",
-      "Writer: Grok (default) vs ChatGPT (side-by-side test pending)"
-    ]
-  },
-  "E": {
-    "title": "E · Text lane",
-    "status": "SMS / iMessage via GoHighLevel - waiting on A2P approval",
-    "texts": [
-      {
-        "day": 0,
-        "title": "Text - TBD (Day 0)"
-      },
-      {
-        "day": 5,
-        "title": "Text - TBD (Day 5)"
-      },
-      {
-        "day": 10,
-        "title": "Text - TBD (Day 10)"
-      }
-    ]
-  },
-  "F": {
-    "title": "F · Open questions",
-    "items": [
-      "Which emails also get a text?",
-      "Email 1 wording differs by entry reason (no-show vs undecided)?",
-      "Send from Gmail or GHL sub-account?",
-      "When to switch from approve-first to auto-send?"
-    ]
-  },
-  "router": {
-    "title": "Lead enters a sequence",
-    "note": "Router: each lead goes into ONE branch based on why they need follow-up. Every branch reuses the same architecture (entry → emails → branches/exits).",
-    "branches": [
-      {
-        "id": 1,
-        "name": "Branch 1: No-Show / Follow-Up Pending",
-        "when": "No-show on a follow-up or two-call close, or call ended without a close (follow-up date / undecided)",
-        "color": "#2e7d32"
-      },
-      {
-        "id": 2,
-        "name": "Branch 2: Two-Call Close Nurture",
-        "when": "Two-call close booked (Grape event on the calendar)",
-        "color": "#e65100"
-      },
-      {
-        "id": 3,
-        "name": "Branch 3: Call Confirmation (pre-call show-up)",
-        "when": "Any call booked - extra layer on top of the appointment setter",
-        "color": "#00838f"
-      },
-      {
-        "id": 4,
-        "name": "Branch 4+: more coming (TBD)",
-        "when": "Other lead categories - Daniel to define",
-        "color": "#9e9e9e"
-      }
-    ]
-  },
-  "B3": {
-    "title": "Branch 3 · Call Confirmation (pre-call show-up)",
-    "status": "Architecture TBD - Daniel to define. Email + SMS lane, runs before the call as an extra layer on top of the appointment setter (not fully reliable).",
-    "entry": "Call booked",
-    "checkpoints": [
-      "Acknowledged they have the call link",
-      "Received case studies",
-      "Watched case studies"
-    ],
-    "touch": [
-      "Email - TBD",
-      "Text - TBD"
-    ],
-    "noack": "No acknowledgment → escalate / next touch (TBD)",
-    "end": "Shows up to call"
-  },
-  "B2": {
-    "title": "Branch 2 · Two-Call Close Nurture",
-    "entry": "Two-call close booked (Grape / purple event on Daniel's calendar)",
-    "precall": [
-      {
-        "n": 1,
-        "title": "Pre-call Email 1 - sent right after booking",
-        "prompt": "TBD - Daniel to define"
-      },
-      {
-        "n": 2,
-        "title": "Pre-call Email 2 - TBD timing before call (e.g. day before)",
-        "prompt": "TBD - Daniel to define"
-      }
-    ],
-    "meeting": "Two-call close meeting",
-    "exits": [
-      {
-        "if": "Pays",
-        "to": "Closed - stops everything",
-        "kind": "closed"
-      },
-      {
-        "if": "Shows but no decision",
-        "to": "Hands off to follow-up → Branch 1 (Follow-Up Pending) or a TBD post-call nurture",
-        "kind": "b1"
-      },
-      {
-        "if": "No-show",
-        "to": "→ Branch 1 No-Show: Warm, next-day touch",
-        "kind": "b1"
-      },
-      {
-        "if": "Reschedules",
-        "to": "↺ Back to pre-call phase (new date)",
-        "kind": "loop"
-      }
-    ],
-    "questions": [
-      "Exact timing of each pre-call email?",
-      "How many pre-call emails (1, 2, more)?",
-      "Post-call 'no decision' path: reuse Branch 1 or its own post-call nurture?",
-      "How do pre-call emails fit with the nightly confirmation email already sent the night before?"
-    ]
-  }
+  "globalRules": [
+    "A lead can be active in only one branch at a time; never stack branch sequences.",
+    "A newly booked appointment pauses the active recovery/follow-up sequence and moves the lead to the matching confirmation branch.",
+    "Any reply pauses automation for Daniel to handle; do not restart a sequence automatically.",
+    "Honor the specific follow-up date promised on the call before applying a generic cadence.",
+    "Avoid repeating messages or proof already sent in the existing thread.",
+    "Before every send, verify there is no reply, booked call, payment, manual pause, or opt-out.",
+    "Respect channel permission, opt-outs, CASL, and CAN-SPAM; send only relevant, useful touches.",
+    "Payment moves the lead to Closed and stops all automation. Daniel's explicit Lost/DQ instruction stops all automation."
+  ],
+  "branches": [
+    {
+      "id": 1,
+      "slug": "first-call-confirmation",
+      "name": "First-Call Confirmation",
+      "color": "#00796b",
+      "purpose": "Get a brand-new booked prospect to acknowledge the meeting, consume the proof, and show up prepared.",
+      "entry": "A brand-new first call is booked.",
+      "counts": { "emails": 2, "texts": "2–3" },
+      "phases": [
+        {
+          "name": "Booking",
+          "touches": [
+            { "timing": "Immediately after booking", "channel": "Email", "label": "Booking confirmation + call link", "prompt": "" },
+            { "timing": "Immediately after booking", "channel": "SMS", "label": "Booking acknowledgment", "prompt": "" }
+          ]
+        },
+        {
+          "name": "Pre-call",
+          "touches": [
+            { "timing": "24 hours before", "channel": "Email", "label": "Reminder + preparation", "prompt": "" },
+            { "timing": "24 hours before", "channel": "SMS", "label": "Conditional confirmation if unanswered", "conditional": true, "prompt": "" },
+            { "timing": "15 minutes before", "channel": "SMS", "label": "Call link + show-up reminder", "prompt": "" }
+          ]
+        }
+      ],
+      "routes": [
+        { "when": "Shows and no second call is booked", "to": "Branch 3 · Follow-Up Pending" },
+        { "when": "Shows and books a second/closing call", "to": "Branch 4 · Two-Call Close Nurture" },
+        { "when": "No-shows", "to": "Branch 2 · First-Call No-Show" },
+        { "when": "Reschedules", "to": "Restart Branch 1 around the new appointment" },
+        { "when": "Pays or is marked Lost/DQ", "to": "Closed / stop" }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "first-call-no-show",
+      "name": "First-Call No-Show",
+      "color": "#ef6c00",
+      "purpose": "Recover a brand-new prospect who missed the original call before Daniel ever spoke with them.",
+      "entry": "EOD/Grokbot confirms the original first call was a no-show and no replacement booking exists.",
+      "counts": { "emails": 7, "texts": 2 },
+      "phases": [
+        {
+          "name": "Immediate recovery",
+          "touches": [
+            { "timing": "Day 0", "channel": "Email", "label": "First-call no-show recovery 1", "prompt": "" },
+            { "timing": "Day 0", "channel": "SMS", "label": "First-call no-show text 1", "prompt": "" },
+            { "timing": "Day 3", "channel": "SMS", "label": "First-call no-show text 2", "prompt": "" },
+            { "timing": "Day 5", "channel": "Email", "label": "First-call no-show recovery 2", "prompt": "" },
+            { "timing": "Day 12", "channel": "Email", "label": "First-call no-show recovery 3", "prompt": "" },
+            { "timing": "Day 30", "channel": "Email", "label": "First-call no-show recovery 4", "prompt": "" }
+          ]
+        },
+        {
+          "name": "Long-tail recovery",
+          "touches": [
+            { "timing": "Day 90", "channel": "Email", "label": "First-call no-show recovery 5", "prompt": "" },
+            { "timing": "Day 180", "channel": "Email", "label": "First-call no-show recovery 6", "prompt": "" },
+            { "timing": "Day 270", "channel": "Email", "label": "First-call no-show recovery 7", "prompt": "" }
+          ]
+        }
+      ],
+      "routes": [
+        { "when": "Books a first call", "to": "Branch 1 · First-Call Confirmation" },
+        { "when": "Replies", "to": "Pause automation for Daniel" },
+        { "when": "Pays, opts out, or is marked Lost/DQ", "to": "Closed / stop" }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "follow-up-pending",
+      "name": "Follow-Up Pending",
+      "color": "#2e7d32",
+      "purpose": "Re-loop a prospect Daniel has spoken with when no second/closing call is currently booked.",
+      "entry": "The first call was held, the lead did not buy, and no second/closing call is booked. Honor any date Daniel promised before starting the generic cadence.",
+      "counts": { "emails": 17, "texts": "up to 5" },
+      "phases": [
+        {
+          "name": "Active follow-up",
+          "touches": [
+            { "timing": "Day 0", "channel": "Email", "label": "Follow-up pending email 1", "prompt": "" },
+            { "timing": "Day 3", "channel": "SMS", "label": "Follow-up pending text 1", "prompt": "" },
+            { "timing": "Day 5", "channel": "Email", "label": "Follow-up pending email 2", "prompt": "" },
+            { "timing": "Day 12", "channel": "Email", "label": "Follow-up pending email 3", "prompt": "" },
+            { "timing": "Day 17", "channel": "SMS", "label": "Follow-up pending text 2", "prompt": "" },
+            { "timing": "Day 21", "channel": "Email", "label": "Follow-up pending email 4", "prompt": "" },
+            { "timing": "Day 35", "channel": "Email", "label": "Follow-up pending email 5", "prompt": "" },
+            { "timing": "Day 45", "channel": "SMS", "label": "Follow-up pending text 3", "prompt": "" },
+            { "timing": "Day 50", "channel": "Email", "label": "Follow-up pending email 6", "prompt": "" },
+            { "timing": "Day 70", "channel": "Email", "label": "Follow-up pending email 7", "prompt": "" },
+            { "timing": "Day 90", "channel": "Email", "label": "Follow-up pending email 8", "prompt": "" }
+          ]
+        },
+        {
+          "name": "Monthly nurture",
+          "touches": [
+            { "timing": "Day 120", "channel": "Email", "label": "Monthly nurture 1", "prompt": "" },
+            { "timing": "Day 150", "channel": "Email", "label": "Monthly nurture 2", "prompt": "" },
+            { "timing": "Day 180", "channel": "Email", "label": "Monthly nurture 3", "prompt": "" },
+            { "timing": "Day 210", "channel": "Email", "label": "Monthly nurture 4", "prompt": "" },
+            { "timing": "Day 240", "channel": "Email", "label": "Monthly nurture 5", "prompt": "" },
+            { "timing": "Day 270", "channel": "Email", "label": "Monthly nurture 6", "prompt": "" },
+            { "timing": "Day 300", "channel": "Email", "label": "Monthly nurture 7", "prompt": "" },
+            { "timing": "Day 330", "channel": "Email", "label": "Monthly nurture 8", "prompt": "" },
+            { "timing": "Day 360", "channel": "Email", "label": "Monthly nurture 9", "prompt": "" },
+            { "timing": "Later, when contextually relevant", "channel": "SMS", "label": "Selective later text 4", "conditional": true, "prompt": "" },
+            { "timing": "Later, when contextually relevant", "channel": "SMS", "label": "Selective later text 5", "conditional": true, "prompt": "" }
+          ]
+        }
+      ],
+      "routes": [
+        { "when": "Books a second/closing call", "to": "Branch 4 · Two-Call Close Nurture" },
+        { "when": "Replies", "to": "Pause automation for Daniel" },
+        { "when": "Pays, opts out, or is marked Lost/DQ", "to": "Closed / stop" }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "two-call-close-nurture",
+      "name": "Two-Call Close Nurture",
+      "color": "#6a1b9a",
+      "purpose": "Warm and confirm a prospect between the first conversation and the booked second/closing call.",
+      "entry": "A second/closing call is booked after Daniel has already spoken with the prospect.",
+      "counts": { "emails": 2, "texts": "2–3" },
+      "phases": [
+        {
+          "name": "Booking",
+          "touches": [
+            { "timing": "Immediately after booking", "channel": "Email", "label": "Second-call booking + preparation", "prompt": "" },
+            { "timing": "Immediately after booking", "channel": "SMS", "label": "Second-call acknowledgment", "prompt": "" }
+          ]
+        },
+        {
+          "name": "Pre-call",
+          "touches": [
+            { "timing": "24 hours before", "channel": "Email", "label": "Second-call reminder + decision preparation", "prompt": "" },
+            { "timing": "24 hours before", "channel": "SMS", "label": "Conditional confirmation if unanswered", "conditional": true, "prompt": "" },
+            { "timing": "15 minutes before", "channel": "SMS", "label": "Second-call link + reminder", "prompt": "" }
+          ]
+        }
+      ],
+      "routes": [
+        { "when": "Shows and buys", "to": "Closed / stop" },
+        { "when": "Shows and does not buy", "to": "Branch 6 · Post-Second-Call Follow-Up" },
+        { "when": "No-shows", "to": "Branch 5 · Second-Call No-Show" },
+        { "when": "Reschedules", "to": "Restart Branch 4 around the new appointment" },
+        { "when": "Explicitly declines or is marked Lost/DQ", "to": "Lost / stop" }
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "second-call-no-show",
+      "name": "Second-Call No-Show",
+      "color": "#c62828",
+      "purpose": "Recover a warm prospect Daniel already spoke with who missed the scheduled second/closing call.",
+      "entry": "EOD/Grokbot confirms the second/closing call was a no-show and no replacement booking exists.",
+      "counts": { "emails": 16, "texts": "up to 5" },
+      "phases": [
+        {
+          "name": "Active recovery",
+          "touches": [
+            { "timing": "Day 0", "channel": "SMS", "label": "Second-call no-show text 1", "prompt": "" },
+            { "timing": "Day 1", "channel": "Email", "label": "Second-call no-show email 1", "prompt": "" },
+            { "timing": "Day 3", "channel": "SMS", "label": "Second-call no-show text 2", "prompt": "" },
+            { "timing": "Day 5", "channel": "Email", "label": "Second-call no-show email 2", "prompt": "" },
+            { "timing": "Day 10", "channel": "Email", "label": "Second-call no-show email 3", "prompt": "" },
+            { "timing": "Day 14", "channel": "SMS", "label": "Second-call no-show text 3", "prompt": "" },
+            { "timing": "Day 21", "channel": "Email", "label": "Second-call no-show email 4", "prompt": "" },
+            { "timing": "Day 45", "channel": "Email", "label": "Second-call no-show email 5", "prompt": "" },
+            { "timing": "Day 75", "channel": "Email", "label": "Second-call no-show email 6", "prompt": "" },
+            { "timing": "Day 90", "channel": "Email", "label": "Second-call no-show email 7", "prompt": "" }
+          ]
+        },
+        {
+          "name": "Monthly nurture",
+          "touches": [
+            { "timing": "Day 120", "channel": "Email", "label": "Monthly nurture 1", "prompt": "" },
+            { "timing": "Day 150", "channel": "Email", "label": "Monthly nurture 2", "prompt": "" },
+            { "timing": "Day 180", "channel": "Email", "label": "Monthly nurture 3", "prompt": "" },
+            { "timing": "Day 210", "channel": "Email", "label": "Monthly nurture 4", "prompt": "" },
+            { "timing": "Day 240", "channel": "Email", "label": "Monthly nurture 5", "prompt": "" },
+            { "timing": "Day 270", "channel": "Email", "label": "Monthly nurture 6", "prompt": "" },
+            { "timing": "Day 300", "channel": "Email", "label": "Monthly nurture 7", "prompt": "" },
+            { "timing": "Day 330", "channel": "Email", "label": "Monthly nurture 8", "prompt": "" },
+            { "timing": "Day 360", "channel": "Email", "label": "Monthly nurture 9", "prompt": "" },
+            { "timing": "Later, when contextually relevant", "channel": "SMS", "label": "Selective later text 4", "conditional": true, "prompt": "" },
+            { "timing": "Later, when contextually relevant", "channel": "SMS", "label": "Selective later text 5", "conditional": true, "prompt": "" }
+          ]
+        }
+      ],
+      "routes": [
+        { "when": "Rebooks the second/closing call", "to": "Branch 4 · Two-Call Close Nurture" },
+        { "when": "Replies", "to": "Pause automation for Daniel" },
+        { "when": "Pays, opts out, or is marked Lost/DQ", "to": "Closed / stop" }
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "post-second-call-follow-up",
+      "name": "Post-Second-Call Follow-Up",
+      "color": "#1565c0",
+      "purpose": "Continue the sales conversation after the second/closing call was held but the prospect did not buy.",
+      "entry": "The second/closing call was held and the prospect did not purchase or explicitly decline.",
+      "counts": { "emails": 17, "texts": "up to 5" },
+      "phases": [
+        {
+          "name": "Active follow-up",
+          "touches": [
+            { "timing": "Day 0", "channel": "Email", "label": "Post-second-call email 1", "prompt": "" },
+            { "timing": "Day 2", "channel": "SMS", "label": "Post-second-call text 1", "prompt": "" },
+            { "timing": "Day 3", "channel": "Email", "label": "Post-second-call email 2", "prompt": "" },
+            { "timing": "Day 7", "channel": "Email", "label": "Post-second-call email 3", "prompt": "" },
+            { "timing": "Day 11", "channel": "SMS", "label": "Post-second-call text 2", "prompt": "" },
+            { "timing": "Day 14", "channel": "Email", "label": "Post-second-call email 4", "prompt": "" },
+            { "timing": "Day 25", "channel": "Email", "label": "Post-second-call email 5", "prompt": "" },
+            { "timing": "Day 30", "channel": "SMS", "label": "Post-second-call text 3", "prompt": "" },
+            { "timing": "Day 40", "channel": "Email", "label": "Post-second-call email 6", "prompt": "" },
+            { "timing": "Day 60", "channel": "Email", "label": "Post-second-call email 7", "prompt": "" },
+            { "timing": "Day 90", "channel": "Email", "label": "Post-second-call email 8", "prompt": "" }
+          ]
+        },
+        {
+          "name": "Monthly nurture",
+          "touches": [
+            { "timing": "Day 120", "channel": "Email", "label": "Monthly nurture 1", "prompt": "" },
+            { "timing": "Day 150", "channel": "Email", "label": "Monthly nurture 2", "prompt": "" },
+            { "timing": "Day 180", "channel": "Email", "label": "Monthly nurture 3", "prompt": "" },
+            { "timing": "Day 210", "channel": "Email", "label": "Monthly nurture 4", "prompt": "" },
+            { "timing": "Day 240", "channel": "Email", "label": "Monthly nurture 5", "prompt": "" },
+            { "timing": "Day 270", "channel": "Email", "label": "Monthly nurture 6", "prompt": "" },
+            { "timing": "Day 300", "channel": "Email", "label": "Monthly nurture 7", "prompt": "" },
+            { "timing": "Day 330", "channel": "Email", "label": "Monthly nurture 8", "prompt": "" },
+            { "timing": "Day 360", "channel": "Email", "label": "Monthly nurture 9", "prompt": "" },
+            { "timing": "Later, when contextually relevant", "channel": "SMS", "label": "Selective later text 4", "conditional": true, "prompt": "" },
+            { "timing": "Later, when contextually relevant", "channel": "SMS", "label": "Selective later text 5", "conditional": true, "prompt": "" }
+          ]
+        }
+      ],
+      "routes": [
+        { "when": "Books another decision call", "to": "Branch 4 · Two-Call Close Nurture" },
+        { "when": "Replies", "to": "Pause automation for Daniel" },
+        { "when": "Pays, opts out, or is marked Lost/DQ", "to": "Closed / stop" }
+      ]
+    }
+  ],
+  "openQuestions": [
+    "Exact content/prompt for every email and SMS touch.",
+    "Which two later contextual SMS opportunities should be used in Branches 3, 5, and 6.",
+    "Final sending system for each channel (Gmail versus GoHighLevel/SendBlue).",
+    "Approval threshold for moving from review-first drafts to automatic sending."
+  ]
 }
